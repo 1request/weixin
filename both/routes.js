@@ -7,7 +7,7 @@ Router.configure({
 Router.map(function () {
 
   // delete me and replace with your homepage
-  this.route('homeTemp', {path: '/'})
+  this.route('weixin', {path: '/'})
 
   // staffs routes
   this.route('staffs',    { path: '/staffs',          controller: Staffs.index });
