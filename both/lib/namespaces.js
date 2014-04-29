@@ -5,3 +5,4 @@ db = {};
 
 // Resource namespaces
 Staffs = {}
+Products = {}

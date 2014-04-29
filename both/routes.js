@@ -15,5 +15,8 @@ Router.map(function () {
   this.route('showStaff', { path: '/staffs/:id',      controller: Staffs.show });
   this.route('editStaff', { path: '/staffs/edit/:id', controller: Staffs.edit });
 
+  // products routes
+  this.route('products',    { path: '/products',          controller: Products.index });
+
 });//<end-routes>
 
