@@ -4,16 +4,65 @@
 </template>
 
 <template name='weixin'>
-  <div id="content">
-    <div class="box">
-      <div class="box-header">
-        <h2><i class="fa fa-edit"></i>Welcome to Weixin!</h2>
+  <div id="html5"></div>
+
+  <div>
+    <div id="banner_area">
+      <div id="intro_video" style="text-align:center;padding:40px 0;">
+        <div id="intro_video_inner"></div>
+        <div id="wistia_99g5s02wsk" class="wistia_embed" style="width:747px;height:420px;display:none;margin:0 auto;">&nbsp;</div>
       </div>
     </div>
-    <div>
-      {{#each players}}
-        {{> player}}
-      {{/each}}
+  </div>
+
+  <div>
+    <div id="slogan" style="height: 432px; background: url(/assets/web/download_bg.jpg) repeat;">
+      <div style="text-align: center;">
+        <a href="#" class="download" onclick="_gaq.push(['_trackEvent', 'register_middle', 'clicked']);">
+          <img src="assets/register_middle.png" />
+        </a>
+      </div>
+      <div style="font-size: 24px; color: #1c9ff1; margin-top: 40px;">口袋里的客服工具，让您随时随地为客户服务！</div>
+      <div style="font-size: 20px; color: #7f7f7f; margin-top: 20px;">不到1分钟您就能轻松的完成产品配置，只需将代码植入手机APP，即可轻松享用。</div>
+      <div style="font-size: 20px; color: #7f7f7f; margin-top: 10px;">这，就是信+，一个基于智能手机APP的客服工具。</div>
+      <div>
+        <img src="/assets/anytime.jpg" style="width: 292px; height: 133px; margin-top: 40px;">
+        <img src="/assets/transform.jpg" style="width: 393px; height: 133px; margin-left: 22px; margin-right: 22px; margin-top: 40px;">
+        <img src="/assets/securely.jpg" style="width: 292px; height: 133px; margin-top: 40px;">
+      </div>
+    </div>
+
+    <div class="featurescontainer">
+      <div class="features">
+        <div class="featurette">
+          <a name="3rdparty"></a>
+          <img src="assets/real_time.jpg" class="featurette-image pull-right" />
+          <h2 class="featurette-heading">随时随地，便捷沟通！<br/></h2>
+          <p class="lead">双向沟通，无缝体验，与你的用户沟通，提供协助，拆掉您与客户中间的隔墙，实时了解用户的诉求。</p>
+          <a href="javascript:;" style="color=#1c9ff1;"><h4 class="lead">了解更多>></h4></a>
+        </div>
+
+        <div class="featurette">
+          <a name="remote"></a>
+          <img src="assets/increase_sales.jpg" class="featurette-image pull-left" />
+          <h2 class="featurette-heading">提升商业转化率<br/></h2>
+          <p class="lead">我们坚信良好的用户沟通渠道是移动营销实现转化的必要环节，并很愿意目睹您的流量转化为成交，并为之努力。这就是信+，有了它移动营销即将蝶变。</p>
+          <a href="javascript:;" style="color=#1c9ff1;"><h4 class="lead">了解更多>></h4></a>
+        </div>
+
+        <div class="featurette">
+          <a name="simplecode"></a>
+          <img src="web/secured.jpg" class="featurette-image pull-right" />
+          <h2 class="featurette-heading">安全稳定<span class="muted">的云服务</span></h2>
+          <p class="lead">安全稳定的云服务，简单的加上一行代码便能让您的应用拥有一个专属的客服系统，如此简单，还不马上试试？</p>
+          <a href="javascript:;" style="color=#1c9ff1;"><h4 class="lead">了解更多>></h4></a>
+        </div>
+
+        <div style="text-align: center">
+          <a href="#"><img src="assets/register_large.png" alt="" /></a>
+          <a href="#"><img src="assets/register_text.png" alt="" /></a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
