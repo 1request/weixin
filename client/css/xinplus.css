@@ -1,0 +1,14 @@
+.navbar .brand {
+  float: left;
+  margin: 0 0 0 -5px;
+}
+
+.navbar .nav > li {
+  float: left;
+}
+
+.navbar .nav > .active > a {
+  background-color: #e5e5e5;
+  color: #555555;
+  text-decoration: none;
+}
