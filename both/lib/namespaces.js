@@ -6,3 +6,5 @@ db = {};
 // Resource namespaces
 Staffs = {}
 Products = {}
+Developers = {}
+Helps = {}

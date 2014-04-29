@@ -18,5 +18,11 @@ Router.map(function () {
   // products routes
   this.route('products',    { path: '/products',          controller: Products.index });
 
+  // developers routes
+  this.route('developers',    { path: '/developers',          controller: Developers.index });
+
+  // helps routes
+  this.route('helps',    { path: '/helps',          controller: Helps.index });
+
 });//<end-routes>
 
