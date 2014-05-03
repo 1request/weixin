@@ -17,6 +17,10 @@ body {
   text-decoration: none;
 }
 
+input[placeholder] {
+  color: black !important;
+}
+
 #intro_video {
   background: url(/assets/head_bg.jpg) no-repeat 50% 0;
   position: relative;
