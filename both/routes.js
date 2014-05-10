@@ -28,3 +28,6 @@ Router.map(function () {
 
 });//<end-routes>
 
+Router.onBeforeAction(function() {
+  document.title = 'XinPlus';
+});
