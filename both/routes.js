@@ -10,6 +10,8 @@ Router.map(function () {
   this.route('weixin', {path: '/'})
 
   // staffs routes
+  this.route('staffChat', { path: '/staffs/chat',     controller: Staffs.chat });
+
   this.route('staffs',    { path: '/staffs',          controller: Staffs.index });
   this.route('newStaff',  { path: '/staffs/new',      controller: Staffs.new });
   this.route('showStaff', { path: '/staffs/:id',      controller: Staffs.show });

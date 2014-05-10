@@ -1,3 +1,11 @@
+Staffs.chat = AppController.extend({
+  // template: 'staffs'
+  // 
+  waitOn: function() {
+    return Meteor.subscribe('staffs');
+  }
+});
+
 // page for a list of Staffs - /staffs
 Staffs.index = AppController.extend({
   template: 'staffs',
@@ -7,7 +15,7 @@ Staffs.index = AppController.extend({
   },
 
   onAfterAction: function() {
-
+    Router.go('staffChat');
   }
 });
 
