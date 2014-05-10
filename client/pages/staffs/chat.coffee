@@ -1,6 +1,9 @@
 ############################
 # Function: layoutDone()
 ############################
+toBottom = ->
+  $('.conversation .talk').animate({scrollTop: $('.conversation .talk #chat-messages-inner').height()});
+  
 layoutDone = ->
   $('.me').map (index, elem) ->
     padding = 20
@@ -39,6 +42,7 @@ Template.chat.events
 
     Meteor.defer ->
       layoutDone()
+      toBottom()
 
 Template.chat.rendered = ->
   layoutDone()
@@ -54,4 +58,5 @@ Template.messageItem.helpers
       'you'
 Template.messageItem.rendered = ->
   layoutDone()
+  toBottom()
 
