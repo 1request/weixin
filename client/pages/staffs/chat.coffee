@@ -17,10 +17,6 @@ layoutDone = ->
 Template.chat.helpers
   customers: ->
     db.customers.find()
-  messageCount: ->
-    @count
-  newMessage: ->
-    @count > 0
 
   lastUpdateTime: ->
     Date.now()
@@ -46,7 +42,24 @@ Template.chat.events
       toBottom()
 
 Template.chat.rendered = ->
+  Session.set('customerSelected', '')
   layoutDone()
+
+############################
+# Template: userItem
+############################
+Template.userItem.helpers
+  messageCount: ->
+    @count
+  newMessage: ->
+    @count > 0
+  customerSelected: ->
+    'user-selected' if Session.get('customerSelected') == @_id
+
+Template.userItem.events
+  'click li': (e) ->
+    console.log 'user: ', @_id
+    Session.set('customerSelected', @_id)
 
 ############################
 # Template: messageItem

@@ -1,5 +1,12 @@
-.chat {
+#xinplus-chat.chat {
   height: 550px;
+
+  .contacts ul.list {
+    li.user-selected, li:hover {
+      background: #2d323d;
+      color: white;
+    }
+  }
 
   .conversation {
     .status {

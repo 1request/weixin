@@ -7,7 +7,7 @@
 </template>
 
 <template name="chat">
-<div class="box chat chat-full noOverflow">
+<div id="xinplus-chat" class="box chat chat-full noOverflow">
 
   <div class="box-header">
     <h2><i class="fa fa-list"></i>Service Centre</h2>
@@ -15,14 +15,7 @@
   <div class="contacts">
     <ul class="list">
       {{#each customers}}
-        <li>
-          <img class="avatar" src="/assets/avatar.jpg" alt="avatar">
-          <span class="name">{{name}}</span>
-          <span class="status online"></span>
-          {{#if newMessage}}
-          <span class="important">{{messageCount}}</span>
-          {{/if}}
-        </li>
+        {{> userItem}}
       {{/each}}
     </ul> 
   </div>
@@ -54,6 +47,18 @@
     </form>  
   </div>
 </div>
+</template>
+
+<!-- Template: userItem -->
+<template name="userItem">
+  <li class="{{customerSelected}}">
+    <img class="avatar" src="/assets/avatar.jpg" alt="avatar">
+    <span class="name">{{name}}</span>
+    <span class="status online"></span>
+    {{#if newMessage}}
+    <span class="important">{{messageCount}}</span>
+    {{/if}}
+  </li>
 </template>
 
 <!-- Template: messageItem -->
