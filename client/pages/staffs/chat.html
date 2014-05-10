@@ -39,24 +39,9 @@
 
     <div class="talk default">
       <div class="chat-messages-inner">
-        <div class="message you">
-          <div class="message-content">
-            <span>Say something</span>
-          </div>
-          <div class="message-arrow"></div>
-        </div>
-        <div class="message me">
-          <div class="message-content">
-            <span>Say something</span>
-          </div>
-          <div class="message-arrow"></div>
-        </div>
-        <div class="message me">
-          <div class="message-content">
-            <span>Say something a lot of things Say something a lot of things Say something a lot of things Say something a lot of things Say something a lot of things Say something a lot of things Say something a lot of things Say something a lot of things Say something a lot of things Say something a lot of things Say something a lot of things</span>
-          </div>
-          <div class="message-arrow"></div>
-        </div>
+        {{#each messages}}
+          {{> messageItem}}
+        {{/each}}
         
         <!-- dummy --> 
         <div class="message"></div>
@@ -69,4 +54,14 @@
     </form>  
   </div>
 </div>
+</template>
+
+<!-- Template: messageItem -->
+<template name="messageItem">
+  <div class="message {{youOrMe}}">
+    <div class="message-content">
+      <span>{{message}}</span>
+    </div>
+    <div class="message-arrow"></div>
+  </div>
 </template>

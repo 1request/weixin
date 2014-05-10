@@ -1,3 +1,6 @@
+############################
+# Function: layoutDone()
+############################
 layoutDone = ->
   $('.me').map (index, elem) ->
     padding = 20
@@ -5,6 +8,9 @@ layoutDone = ->
     offset = height - 17
     $(elem).find('.message-arrow').css({'height': height + 'px', 'background-position-y': offset + 'px'})
 
+############################
+# Template: chat
+############################
 Template.chat.helpers
   customers: ->
     db.customers.find()
@@ -30,7 +36,22 @@ Template.chat.events
     db.messages.insert(data)
 
     message.val('')
-    layoutDone()
+
+    Meteor.defer ->
+      layoutDone()
 
 Template.chat.rendered = ->
   layoutDone()
+
+############################
+# Template: messageItem
+############################
+Template.messageItem.helpers
+  youOrMe: ->
+    if @user_id is Meteor.userId()
+      'me'
+    else
+      'you'
+Template.messageItem.rendered = ->
+  layoutDone()
+
