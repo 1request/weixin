@@ -36,6 +36,7 @@ Template.chat.events
     data =
       message: message.val()
       user_id: Meteor.userId()
+      message_type: 'staff'
     db.messages.insert(data)
 
     message.val('')
@@ -52,7 +53,7 @@ Template.chat.rendered = ->
 ############################
 Template.messageItem.helpers
   youOrMe: ->
-    if @user_id is Meteor.userId()
+    if @message_type is 'staff'
       'me'
     else
       'you'
