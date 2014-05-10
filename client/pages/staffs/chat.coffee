@@ -1,0 +1,36 @@
+layoutDone = ->
+  $('.me').map (index, elem) ->
+    padding = 20
+    height = $(elem).find('.message-content').height() + padding
+    offset = height - 17
+    $(elem).find('.message-arrow').css({'height': height + 'px', 'background-position-y': offset + 'px'})
+
+Template.chat.helpers
+  customers: ->
+    db.customers.find()
+  messageCount: ->
+    @count
+  newMessage: ->
+    @count > 0
+
+  lastUpdateTime: ->
+    Date.now()
+
+  messages: ->
+    db.messages.find()
+
+Template.chat.events
+  'submit .form': (e) ->
+    e.preventDefault()
+
+    message = $('.write-message')
+    data =
+      message: message.val()
+      user_id: Meteor.userId()
+    db.messages.insert(data)
+
+    message.val('')
+    layoutDone()
+
+Template.chat.rendered = ->
+  layoutDone()

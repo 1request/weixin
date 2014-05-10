@@ -1,8 +1,12 @@
 Staffs.chat = AppController.extend({
-  // template: 'staffs'
-  // 
   waitOn: function() {
-    return Meteor.subscribe('staffs');
+    currentUserId = Meteor.userId();
+
+    return [
+      Meteor.subscribe('staffs'), 
+      Meteor.subscribe('customers'), 
+      Meteor.subscribe('messages', currentUserId)
+    ];
   }
 });
 
