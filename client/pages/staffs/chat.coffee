@@ -31,6 +31,7 @@ Template.chat.events
     message = $('.write-message')
     data =
       message: message.val()
+      customer_id: Session.get('customerSelected')
       user_id: Meteor.userId()
       message_type: 'staff'
     db.messages.insert(data)
@@ -58,7 +59,6 @@ Template.userItem.helpers
 
 Template.userItem.events
   'click li': (e) ->
-    console.log 'user: ', @_id
     Session.set('customerSelected', @_id)
 
 ############################
