@@ -1,3 +1,8 @@
+.staff-chat.box {
+  width: 980px;
+  margin: 10px auto 0;
+}
+
 #xinplus-chat.chat {
   height: 550px;
 
@@ -74,7 +79,6 @@
 
     .form {
       border-top: 2px solid #e4e6eb;
-      height: 40px;
       padding: 10px;
 
       input.write-message {

@@ -1,6 +1,6 @@
 <template name='staffChat'>
 
-<div class='staff-chat'>
+<div class='staff-chat box'>
   {{> chat}}
 </div>
 
@@ -54,7 +54,6 @@
   <li class="{{customerSelected}}">
     <img class="avatar" src="/assets/avatar.jpg" alt="avatar">
     <span class="name">{{name}}</span>
-    <span class="status online"></span>
     {{#if newMessage}}
     <span class="important">{{messageCount}}</span>
     {{/if}}
