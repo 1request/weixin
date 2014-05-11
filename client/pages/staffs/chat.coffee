@@ -19,7 +19,7 @@ Template.chat.helpers
     db.customers.find()
 
   lastUpdateTime: ->
-    Date.now()
+    Session.get('lastUpdateTime')
 
   messages: ->
     db.messages.find()
@@ -43,6 +43,8 @@ Template.chat.events
     db.messages.insert(data)
 
     message.val('')
+
+    Session.set('lastUpdateTime', Date())
 
     Meteor.defer ->
       layoutDone()
