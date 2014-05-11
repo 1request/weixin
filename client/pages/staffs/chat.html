@@ -30,7 +30,7 @@
       <div class="time">{{lastUpdateTime}}</div>
     </div>
 
-    <div class="talk default">
+    <div class="talk {{showDefault}}">
       <div id="chat-messages-inner">
         {{#each messages}}
           {{> messageItem}}

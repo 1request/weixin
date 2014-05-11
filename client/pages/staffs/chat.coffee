@@ -1,5 +1,5 @@
 ############################
-# Function: layoutDone()
+# Local Functions
 ############################
 toBottom = ->
   $('.conversation .talk').animate({scrollTop: $('.conversation .talk #chat-messages-inner').height()});
@@ -23,6 +23,9 @@ Template.chat.helpers
 
   messages: ->
     db.messages.find()
+
+  showDefault: ->
+    'default' if Session.get('customerSelected') == ''
 
 Template.chat.events
   'submit .form': (e) ->
