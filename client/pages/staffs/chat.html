@@ -1,7 +1,11 @@
 <template name='staffChat'>
 
 <div class='staff-chat box'>
+{{#if currentUser}}
   {{> chat}}
+{{else}}
+  <h1>Please login</h1>
+{{/if}}
 </div>
 
 </template>
