@@ -61,6 +61,7 @@ Template.userItem.events
   'click li': (e) ->
     db.customers.update({_id: @_id}, {$set: {count: 0}})
     Session.set('customerSelected', @_id)
+    Meteor.setTimeout toBottom, 100
 
 ############################
 # Template: messageItem
@@ -73,5 +74,4 @@ Template.messageItem.helpers
       'you'
 Template.messageItem.rendered = ->
   layoutDone()
-  toBottom()
 
