@@ -1,7 +1,7 @@
 ############################
 # Local Functions
 ############################
-toBottom = ->
+@toBottom = ->
   $('.conversation .talk').animate({scrollTop: $('.conversation .talk #chat-messages-inner').height()});
   
 layoutDone = ->
