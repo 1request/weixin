@@ -59,6 +59,7 @@ Template.userItem.helpers
 
 Template.userItem.events
   'click li': (e) ->
+    db.customers.update({_id: @_id}, {$set: {count: 0}})
     Session.set('customerSelected', @_id)
 
 ############################
