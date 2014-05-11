@@ -29,6 +29,8 @@
       }
     }
     .talk {
+      clear: both;
+      position: relative;
       height: 419px;
       overflow-y: scroll;
       list-style: none;
