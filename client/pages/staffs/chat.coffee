@@ -27,6 +27,9 @@ Template.chat.helpers
   showDefault: ->
     'default' if Session.get('customerSelected') == ''
 
+  isDisabled: ->
+    'disabled' if Session.get('customerSelected') == ''
+
 Template.chat.events
   'submit .form': (e) ->
     e.preventDefault()
