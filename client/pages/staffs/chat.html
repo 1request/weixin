@@ -1,0 +1,75 @@
+<template name='staffChat'>
+
+<div class='staff-chat box'>
+{{#if currentUser}}
+  {{> chat}}
+{{else}}
+  <h1>Please login</h1>
+{{/if}}
+</div>
+
+</template>
+
+<template name="chat">
+<div id="xinplus-chat" class="box chat chat-full noOverflow">
+
+  <div class="box-header">
+    <h2><i class="fa fa-list"></i>Service Centre</h2>
+  </div>
+  <div class="contacts">
+    <ul class="list">
+      {{#each customers}}
+        {{> userItem}}
+      {{/each}}
+    </ul> 
+  </div>
+  <div class="conversation">
+    <div class="status">
+      <div class="app-name">
+        來自APP: {{appName}} -
+        {{#if talkingCustomer}}
+        <button ng-show="selectedUUID" ng-click="chatEnd()" class="btn btn-success" >处理完</button>
+        {{/if}}
+      </div>
+      <div class="time">{{lastUpdateTime}}</div>
+    </div>
+
+    <div class="talk {{showDefault}}">
+      <div id="chat-messages-inner">
+        {{#each messages}}
+          {{> messageItem}}
+        {{/each}}
+        
+        <!-- dummy --> 
+        <div class="message"></div>
+      </div>
+    </div>
+
+    <form class="form chat-message">
+      <input type="text" class="write-message" placeholder="Write Message" {{isDisabled}}>
+      <button class="btn btn-lg btn-success" {{isDisabled}}>Send</button>
+    </form>  
+  </div>
+</div>
+</template>
+
+<!-- Template: userItem -->
+<template name="userItem">
+  <li class="{{customerSelected}}">
+    <img class="avatar" src="/assets/avatar.jpg" alt="avatar">
+    <span class="name">{{name}}</span>
+    {{#if newMessage}}
+    <span class="important">{{messageCount}}</span>
+    {{/if}}
+  </li>
+</template>
+
+<!-- Template: messageItem -->
+<template name="messageItem">
+  <div class="message {{youOrMe}}">
+    <div class="message-content">
+      <span>{{message}}</span>
+    </div>
+    <div class="message-arrow"></div>
+  </div>
+</template>

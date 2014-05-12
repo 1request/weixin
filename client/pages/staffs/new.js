@@ -1,11 +1,11 @@
-Template.newStaffs.helpers({
+Template.newStaff.helpers({
   
 });
 
-Template.newStaffs.events({
+Template.newStaff.events({
   
 });
 
-Template.newStaffs.rendered = function() {
+Template.newStaff.rendered = function() {
   
 };

@@ -1,0 +1,80 @@
+body {
+  background-color: white;
+}
+
+.navbar .brand {
+  float: left;
+  margin: 0 0 0 -5px;
+}
+
+.navbar .nav > li {
+  float: left;
+}
+
+.navbar .nav > .active > a {
+  background-color: #e5e5e5;
+  color: #555555;
+  text-decoration: none;
+}
+
+input[placeholder] {
+  color: black !important;
+}
+
+#intro_video {
+  background: url(/assets/head_bg.jpg) no-repeat 50% 0;
+  position: relative;
+  top: 0px;
+  height: 500px;
+}
+
+#intro_video_inner {
+  background: url(/assets/video_position.jpg) no-repeat;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 851px;
+  height: 420px;
+}
+
+#slogan {
+  text-align: center;
+}
+
+.features {
+  margin: 0 auto;
+  width: 851px;
+}
+
+.featurescontainer{
+  background-color: #f7f7f7;
+  width: auto;
+}
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+.featurette {
+  padding: 60px 0; /* Vertically center images part 1: add padding above and below text. */
+  overflow: hidden; /* Vertically center images part 2: clear their floats. */
+}
+.featurette-image {
+  margin-top: 0px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+}
+
+/* Give some space on the sides of the floated elements so text doesn't run right into it. */
+.featurette-image.pull-left {
+  margin-right: 40px;
+}
+.featurette-image.pull-right {
+  margin-left: 40px;
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  color: #1c9ff1;
+  font-size: 35px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+

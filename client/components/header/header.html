@@ -1,0 +1,22 @@
+<template name="header">
+  <header class="navbar navbar-default">
+    <div class="navbar-header">
+      <a class="brand" href="{{pathFor 'weixin'}}">
+        <img src="/assets/logo.png" alt="XinPlus">
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{pathFor 'weixin'}}">Home</a></li>
+        <li><a href="{{pathFor 'products'}}">Products</a></li>
+        <li class="active"><a href="{{pathFor 'staffChat'}}">Chat</a></li>
+        <li><a href="{{pathFor 'developers'}}">Developers</a></li>
+        <li><a href="{{pathFor 'helps'}}">Helps</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{> loginButtons}}
+      </ul>
+    </div>
+  </header>
+</template>
+

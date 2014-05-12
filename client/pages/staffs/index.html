@@ -1,8 +1,16 @@
 <template name='staffs'>
+{{#if currentUser}}
+  {{> chatLogin}}
+{{else}}
+  {{> chatLogout}}
+{{/if}}
+</template>
 
-<div class='staffs'>
-  
-</div>
+<template name="chatLogin">
+  <h1>Login</h1>
+</template>
 
+<template name="chatLogout">
+  <h1>Logout</h1>
 </template>
 

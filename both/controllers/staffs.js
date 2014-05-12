@@ -1,3 +1,15 @@
+Staffs.chat = AppController.extend({
+  waitOn: function() {
+    currentUserId = Meteor.userId();
+
+    return [
+      Meteor.subscribe('staffs'), 
+      Meteor.subscribe('customers'),
+      Meteor.subscribe('messages', Session.get('customerSelected'))
+    ];
+  }
+});
+
 // page for a list of Staffs - /staffs
 Staffs.index = AppController.extend({
   template: 'staffs',
@@ -7,7 +19,7 @@ Staffs.index = AppController.extend({
   },
 
   onAfterAction: function() {
-
+    Router.go('staffChat');
   }
 });
 

@@ -7,3 +7,7 @@ standard-app-packages
 iron-router
 browser-policy
 bootstrap-3
+scss
+accounts-password
+accounts-ui-bootstrap-3
+coffeescript
