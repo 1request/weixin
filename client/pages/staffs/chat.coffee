@@ -83,3 +83,5 @@ Template.messageItem.helpers
 Template.messageItem.rendered = ->
   layoutDone()
 
+Deps.autorun ->
+  console.log 'user: ', Meteor.user(), ' logging: ', Meteor.loggingIn()
