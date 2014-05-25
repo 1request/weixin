@@ -8,6 +8,10 @@ Developers.index = AppController.extend({
 
   onAfterAction: function() {
 
+  },
+
+  waitOn: function() {
+    Meteor.subscribe('customers');
   }
 });
 
