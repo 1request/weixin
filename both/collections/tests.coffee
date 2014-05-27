@@ -15,3 +15,5 @@
     db.customers.update({_id: customerId}, {$set: {count: count}})
   Meteor.setTimeout toBottom, 100
 
+@addCustomer = (from) ->
+  customer = db.customers.insert({name: from, count: 0})
