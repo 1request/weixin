@@ -42,6 +42,14 @@ Template.chat.events
       message_type: 'staff'
     db.messages.insert(data)
 
+    HTTP.post('http://localhost:3000/kf',
+      params:
+        q: message.val()
+      headers:
+        'Content-Type': 'application/x-www-form-urlencoded'
+      (error, result) -> console.log result
+    )
+
     message.val('')
 
     Session.set('lastUpdateTime', Date())
