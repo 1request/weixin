@@ -16,4 +16,8 @@
   Meteor.setTimeout toBottom, 100
 
 @addCustomer = (from) ->
-  customer = db.customers.insert({name: from, count: 0})
+  customer = db.customers.insert({
+    name: from, 
+    headimgurl: '/assets/avatar.jpg'
+    count: 0
+  })
