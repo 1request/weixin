@@ -42,8 +42,10 @@ Template.chat.events
       message_type: 'staff'
     db.messages.insert(data)
 
+    customer = db.customers.findOne({_id: Session.get('customerSelected')})
     HTTP.post('http://localhost:3000/kf',
       params:
+        weixin_id: customer.fromUser
         q: message.val()
       headers:
         'Content-Type': 'application/x-www-form-urlencoded'
