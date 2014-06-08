@@ -55,6 +55,10 @@ html input[disabled] {
           min-width: 30px;
           max-width: 400px;
           padding: 10px;
+
+          .message-content-image {
+            max-width: 380px;
+          }
         }
       }
 

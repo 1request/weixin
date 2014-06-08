@@ -90,6 +90,8 @@ Template.messageItem.helpers
       'me'
     else
       'you'
+  isImage: ->
+    @content_type is 'image'
 Template.messageItem.rendered = ->
   layoutDone()
 

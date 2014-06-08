@@ -68,7 +68,15 @@
 <template name="messageItem">
   <div class="message {{youOrMe}}">
     <div class="message-content">
-      <span>{{message}}</span>
+      {{#if isImage}}
+        <span>
+          <a href="http://6a17915e.ngrok.com{{message}}">
+            <img class="message-content-image" src="http://6a17915e.ngrok.com{{message}}">
+          </a>
+        </span>
+      {{else}}
+        <span>{{message}}</span>
+      {{/if}}
     </div>
     <div class="message-arrow"></div>
   </div>
