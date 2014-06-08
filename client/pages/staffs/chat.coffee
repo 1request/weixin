@@ -95,5 +95,15 @@ Template.messageItem.helpers
 Template.messageItem.rendered = ->
   layoutDone()
 
+Template.messageItem.events
+  'click img[data-toggle=\"modal\"]': (e) ->
+    e.preventDefault()
+    target = e.target.src
+
+    $("#messageModal .modal-body").load target, ->
+      $('#modalMedia').remove()
+      $(this).append('<img class="model-media" id="modalMedia" />')
+      $('#modalMedia').attr('src', target)
+
 Deps.autorun ->
   console.log 'user: ', Meteor.user(), ' logging: ', Meteor.loggingIn()

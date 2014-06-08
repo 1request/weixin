@@ -51,6 +51,9 @@
     </form>  
   </div>
 </div>
+
+{{> messageModel}}
+
 </template>
 
 <!-- Template: userItem -->
@@ -70,14 +73,27 @@
     <div class="message-content">
       {{#if isImage}}
         <span>
-          <a href="http://6a17915e.ngrok.com{{message}}">
-            <img class="message-content-image" src="http://6a17915e.ngrok.com{{message}}">
-          </a>
+          <img class="message-content-image" src="http://6a17915e.ngrok.com{{message}}" data-toggle="modal" data-target="#messageModal">
         </span>
       {{else}}
         <span>{{message}}</span>
       {{/if}}
     </div>
     <div class="message-arrow"></div>
+  </div>
+</template>
+
+<template name="messageModel">
+  <!-- Modal -->
+  <div class="modal fade bs-example-modal-lg" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
   </div>
 </template>
