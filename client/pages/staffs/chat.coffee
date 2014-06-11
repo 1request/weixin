@@ -94,6 +94,8 @@ Template.messageItem.helpers
     @content_type is 'image'
   isAudio: ->
     @content_type is 'voice'
+  isVideo: ->
+    @content_type is 'video'
 Template.messageItem.rendered = ->
   layoutDone()
 

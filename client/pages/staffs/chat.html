@@ -82,9 +82,16 @@
             audio tag not supported.
           </audio>
         </span>
+      {{else}}{{#if isVideo}}
+        <span>
+          <video width="320" controls>
+            <source src="http://6a17915e.ngrok.com{{message}}" type="video/mp4">
+            video tag not supported.
+          </video>
+        </span>
       {{else}}
         <span>{{message}}</span>
-      {{/if}}{{/if}}
+      {{/if}}{{/if}}{{/if}}
     </div>
     <div class="message-arrow"></div>
   </div>
