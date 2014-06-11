@@ -89,9 +89,15 @@
             video tag not supported.
           </video>
         </span>
+      {{else}}{{#if isLocation}}
+        <span>
+          <button type="button" class="btn btn-primary" value="http://maps.google.com/?q={{message}}">
+            View in Google Map
+          </button>
+        </span>
       {{else}}
         <span>{{message}}</span>
-      {{/if}}{{/if}}{{/if}}
+      {{/if}}{{/if}}{{/if}}{{/if}}
     </div>
     <div class="message-arrow"></div>
   </div>

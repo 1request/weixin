@@ -96,6 +96,8 @@ Template.messageItem.helpers
     @content_type is 'voice'
   isVideo: ->
     @content_type is 'video'
+  isLocation: ->
+    @content_type is 'location'
 Template.messageItem.rendered = ->
   layoutDone()
 
@@ -108,6 +110,10 @@ Template.messageItem.events
       $('#modalMedia').remove()
       $(this).append('<img class="model-media" id="modalMedia" />')
       $('#modalMedia').attr('src', target)
+
+  'click button': (e) ->
+    target = e.target.value
+    window.open target, "_blank"
 
 Deps.autorun ->
   console.log 'user: ', Meteor.user(), ' logging: ', Meteor.loggingIn()
