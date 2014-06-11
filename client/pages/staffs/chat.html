@@ -75,9 +75,16 @@
         <span>
           <img class="message-content-image" src="http://6a17915e.ngrok.com{{message}}" data-toggle="modal" data-target="#messageModal">
         </span>
+      {{else}}{{#if isAudio}}
+        <span>
+          <audio controls>
+            <source src="http://6a17915e.ngrok.com{{message}}" type="audio/mpeg">
+            audio tag not supported.
+          </audio>
+        </span>
       {{else}}
         <span>{{message}}</span>
-      {{/if}}
+      {{/if}}{{/if}}
     </div>
     <div class="message-arrow"></div>
   </div>

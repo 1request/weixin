@@ -17,4 +17,4 @@ BrowserPolicy.content.disallowInlineScripts();
 //BrowserPolicy.content.allowInlineStyles() // default
 //BrowserPolicy.content.disallowInlineStyles();
 BrowserPolicy.content.allowImageOrigin ('http://wx.qlogo.cn/');
-BrowserPolicy.content.allowImageOrigin ('http://6a17915e.ngrok.com/');
+BrowserPolicy.content.allowOriginForAll ('http://6a17915e.ngrok.com/');
