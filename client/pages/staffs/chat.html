@@ -71,25 +71,25 @@
 <template name="messageItem">
   <div class="message {{youOrMe}}">
     <div class="message-content">
-      {{#if isImage}}
+      {{#if contentTypeIs 'image'}}
         <span>
           <img class="message-content-image" src="http://6a17915e.ngrok.com{{message}}" data-toggle="modal" data-target="#messageModal">
         </span>
-      {{else}}{{#if isAudio}}
+      {{else}}{{#if contentTypeIs 'voice'}}
         <span>
           <audio controls>
             <source src="http://6a17915e.ngrok.com{{message}}" type="audio/mpeg">
             audio tag not supported.
           </audio>
         </span>
-      {{else}}{{#if isVideo}}
+      {{else}}{{#if contentTypeIs 'video'}}
         <span>
           <video width="100%" controls>
             <source src="http://6a17915e.ngrok.com{{message}}" type="video/mp4">
             video tag not supported.
           </video>
         </span>
-      {{else}}{{#if isLocation}}
+      {{else}}{{#if contentTypeIs 'location'}}
         <span>
           <button type="button" class="btn btn-primary" value="http://maps.google.com/?q={{message}}">
             View in Google Map

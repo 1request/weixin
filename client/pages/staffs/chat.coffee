@@ -90,14 +90,8 @@ Template.messageItem.helpers
       'me'
     else
       'you'
-  isImage: ->
-    @content_type is 'image'
-  isAudio: ->
-    @content_type is 'voice'
-  isVideo: ->
-    @content_type is 'video'
-  isLocation: ->
-    @content_type is 'location'
+  contentTypeIs: (type) ->
+    @content_type is type
 Template.messageItem.rendered = ->
   layoutDone()
 
