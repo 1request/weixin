@@ -73,19 +73,19 @@
     <div class="message-content">
       {{#if contentTypeIs 'image'}}
         <span>
-          <img class="message-content-image" src="http://6a17915e.ngrok.com{{message}}" data-toggle="modal" data-target="#messageModal">
+          <img class="message-content-image" src="{{railsUrl}}{{message}}" data-toggle="modal" data-target="#messageModal">
         </span>
       {{else}}{{#if contentTypeIs 'voice'}}
         <span>
           <audio controls>
-            <source src="http://6a17915e.ngrok.com{{message}}" type="audio/mpeg">
+            <source src="{{railsUrl}}{{message}}" type="audio/mpeg">
             audio tag not supported.
           </audio>
         </span>
       {{else}}{{#if contentTypeIs 'video'}}
         <span>
           <video controls>
-            <source src="http://6a17915e.ngrok.com{{message}}" type="video/mp4">
+            <source src="{{railsUrl}}{{message}}" type="video/mp4">
             video tag not supported.
           </video>
         </span>

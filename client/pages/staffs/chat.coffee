@@ -92,6 +92,8 @@ Template.messageItem.helpers
       'you'
   contentTypeIs: (type) ->
     @content_type is type
+  railsUrl: ->
+    'http://6a17915e.ngrok.com'
 Template.messageItem.rendered = ->
   layoutDone()
 
