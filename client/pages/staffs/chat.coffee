@@ -43,7 +43,7 @@ Template.chat.events
     db.messages.insert(data)
 
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
-    HTTP.post('http://localhost:3000/kf',
+    HTTP.post('http://api.xin.io/kf',
       params:
         weixin_id: customer.fromUser
         q: message.val()
