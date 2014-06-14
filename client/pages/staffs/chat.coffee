@@ -93,7 +93,7 @@ Template.messageItem.helpers
   contentTypeIs: (type) ->
     @content_type is type
   railsUrl: ->
-    'http://6a17915e.ngrok.com'
+    'http://api.xin.io'
 Template.messageItem.rendered = ->
   layoutDone()
 
