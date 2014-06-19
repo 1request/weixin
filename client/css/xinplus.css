@@ -2,6 +2,11 @@ body {
   background-color: white;
 }
 
+.brand > img {
+  height: 55px;
+  margin:0 15px 0 25px;
+}
+
 .navbar .brand {
   float: left;
   margin: 0 0 0 -5px;
