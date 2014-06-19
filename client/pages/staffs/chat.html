@@ -51,12 +51,15 @@
     </form>  
   </div>
 </div>
+
+{{> messageModel}}
+
 </template>
 
 <!-- Template: userItem -->
 <template name="userItem">
   <li class="{{customerSelected}}">
-    <img class="avatar" src="/assets/avatar.jpg" alt="avatar">
+    <img class="avatar" src="{{headimgurl}}" alt="avatar">
     <span class="name">{{name}}</span>
     {{#if newMessage}}
     <span class="important">{{messageCount}}</span>
@@ -68,8 +71,49 @@
 <template name="messageItem">
   <div class="message {{youOrMe}}">
     <div class="message-content">
-      <span>{{message}}</span>
+      {{#if contentTypeIs 'image'}}
+        <span>
+          <img class="message-content-image" src="{{railsUrl}}{{message}}" data-toggle="modal" data-target="#messageModal">
+        </span>
+      {{else}}{{#if contentTypeIs 'voice'}}
+        <span>
+          <audio controls>
+            <source src="{{railsUrl}}{{message}}" type="audio/mpeg">
+            audio tag not supported.
+          </audio>
+        </span>
+      {{else}}{{#if contentTypeIs 'video'}}
+        <span>
+          <video controls>
+            <source src="{{railsUrl}}{{message}}" type="video/mp4">
+            video tag not supported.
+          </video>
+        </span>
+      {{else}}{{#if contentTypeIs 'location'}}
+        <span>
+          <button type="button" class="btn btn-primary" value="http://maps.google.com/?q={{message}}">
+            View in Google Map
+          </button>
+        </span>
+      {{else}}
+        <span>{{message}}</span>
+      {{/if}}{{/if}}{{/if}}{{/if}}
     </div>
     <div class="message-arrow"></div>
+  </div>
+</template>
+
+<template name="messageModel">
+  <!-- Modal -->
+  <div class="modal fade bs-example-modal-lg" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
   </div>
 </template>

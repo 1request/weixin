@@ -16,4 +16,5 @@ BrowserPolicy.content.disallowInlineScripts();
 //BrowserPolicy.content.disallowEval(); // default
 //BrowserPolicy.content.allowInlineStyles() // default
 //BrowserPolicy.content.disallowInlineStyles();
-
+BrowserPolicy.content.allowImageOrigin ('http://wx.qlogo.cn/');
+BrowserPolicy.content.allowOriginForAll ('http://api.xin.io/');

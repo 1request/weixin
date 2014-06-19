@@ -42,6 +42,16 @@ Template.chat.events
       message_type: 'staff'
     db.messages.insert(data)
 
+    customer = db.customers.findOne({_id: Session.get('customerSelected')})
+    HTTP.post('http://api.xin.io/kf',
+      params:
+        weixin_id: customer.fromUser
+        q: message.val()
+      headers:
+        'Content-Type': 'application/x-www-form-urlencoded'
+      (error, result) -> console.log result
+    )
+
     message.val('')
 
     Session.set('lastUpdateTime', Date())
@@ -80,6 +90,26 @@ Template.messageItem.helpers
       'me'
     else
       'you'
+  contentTypeIs: (type) ->
+    @content_type is type
+  railsUrl: ->
+    'http://api.xin.io'
 Template.messageItem.rendered = ->
   layoutDone()
 
+Template.messageItem.events
+  'click img[data-toggle=\"modal\"]': (e) ->
+    e.preventDefault()
+    target = e.target.src
+
+    $("#messageModal .modal-body").load target, ->
+      $('#modalMedia').remove()
+      $(this).append('<img class="model-media" id="modalMedia" />')
+      $('#modalMedia').attr('src', target)
+
+  'click button': (e) ->
+    target = e.target.value
+    window.open target, "_blank"
+
+Deps.autorun ->
+  console.log 'user: ', Meteor.user(), ' logging: ', Meteor.loggingIn()

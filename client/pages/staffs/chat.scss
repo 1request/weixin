@@ -55,6 +55,10 @@ html input[disabled] {
           min-width: 30px;
           max-width: 400px;
           padding: 10px;
+
+          .message-content-image {
+            max-width: 380px;
+          }
         }
       }
 
@@ -64,6 +68,12 @@ html input[disabled] {
         .message-content {
           background-color: #a1d9ff;
           margin-left: 20px;
+
+          span {
+            video {
+              width: 100%;
+            }
+          }
         }
       }
 
@@ -117,4 +127,8 @@ html input[disabled] {
       }
     }
   }
+}
+
+.model-media {
+  width: 100%;
 }
