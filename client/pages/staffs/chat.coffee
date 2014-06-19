@@ -30,6 +30,25 @@ Template.chat.helpers
   isDisabled: ->
     'disabled' if Session.get('customerSelected') == ''
 
+  greeting: ->
+    t = new Date()
+    h = t.getHours()
+    if h >=0 && h <= 2
+      greeting = '午夜好' 
+    else if h >=3 && h <= 5
+      greeting = '凌晨好' 
+    else if h >= 6 && h <= 11
+      greeting = '早上好' 
+    else if h >=12 && h <=13
+      greeting = '中午好' 
+    else if h >=14 && h <=16
+      greeting = '下午好' 
+    else if h >= 17 && h <= 21
+      greeting = '傍晚好' 
+    else
+      greeting = '晚上好'
+    greeting
+
 Template.chat.events
   'submit .form': (e) ->
     e.preventDefault()

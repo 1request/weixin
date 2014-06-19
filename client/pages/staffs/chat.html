@@ -14,7 +14,7 @@
 <div id="xinplus-chat" class="box chat chat-full noOverflow">
 
   <div class="box-header">
-    <h2><i class="fa fa-list"></i>Service Centre</h2>
+  <h2><i class="fa fa-list"></i>{{greeting}}</h2>
   </div>
   <div class="contacts">
     <ul class="list">
@@ -46,8 +46,8 @@
     </div>
 
     <form class="form chat-message">
-      <input type="text" class="write-message" placeholder="Write Message" {{isDisabled}}>
-      <button class="btn btn-lg btn-success" {{isDisabled}}>Send</button>
+      <input type="text" class="write-message" placeholder="在此输入信息" {{isDisabled}}>
+      <button class="btn btn-lg btn-success" {{isDisabled}}>发送</button>
     </form>  
   </div>
 </div>
