@@ -1,0 +1,1 @@
+db.accounts = new Meteor.Collection 'accounts'

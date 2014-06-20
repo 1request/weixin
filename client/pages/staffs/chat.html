@@ -2,12 +2,58 @@
 
 <div class='staff-chat box'>
 {{#if currentUser}}
+  {{> accountInfo}}
   {{> chat}}
 {{else}}
   <h1>Please login</h1>
 {{/if}}
 </div>
 
+</template>
+
+<template name="accountInfo">
+  <div class="box-header">
+    <h2><i class="fa fa-user"></i>Account Info</h2>
+    <div class="box-icon">
+      <i class="fa fa-wrench" data-toggle="modal" data-target="#accountModal"></i>
+      <span class="arrow-toggle" data-toggle="collapse" data-parent="#accordion" href="#accountInfo">
+        <i class="fa fa-chevron-up"></i>
+        <i class="fa fa-chevron-down"></i>
+      </span>
+    </div>
+  </div>
+  <div class="box-content panel-collapse collapse in" id="accountInfo">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>{{account.name}}</td>
+        </tr>
+        <tr>
+          <td>WeChat ID</td>
+          <td>{{account.weixin_id}}</td>
+        </tr>
+        <tr>
+          <td>App ID</td>
+          <td>{{account.app_id}}</td>
+        </tr>
+        <tr>
+          <td>App Secret</td>
+          <td>{{account.app_secret}}</td>
+        </tr>
+        <tr>
+          <td>URL</td>
+          <td>
+            {{account_url}}
+          </td>
+        </tr>
+        <tr>
+          <td>Token</td>
+          <td>{{account.weixin_token}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <template name="chat">

@@ -12,6 +12,19 @@ layoutDone = ->
     $(elem).find('.message-arrow').css({'height': height + 'px', 'background-position-y': offset + 'px'})
 
 ############################
+# Template: accountInfo
+############################
+Template.accountInfo.helpers
+  accountSelected: ->
+    Session.get('accountSelected')
+  account: ->
+    db.accounts.findOne({weixin_id: Session.get('accountSelected')})
+  account_url: ->
+    account = db.accounts.findOne({weixin_id: Session.get('accountSelected')})
+    if account
+      'http://localhost:3000/weixin/' + account.weixin_secret_key
+
+############################
 # Template: chat
 ############################
 Template.chat.helpers
@@ -93,7 +106,8 @@ Template.messageItem.helpers
   contentTypeIs: (type) ->
     @content_type is type
   railsUrl: ->
-    'http://api.xin.io'
+    'http://localhost:3000'
+
 Template.messageItem.rendered = ->
   layoutDone()
 
