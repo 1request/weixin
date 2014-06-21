@@ -25,9 +25,14 @@ Template.accountList.events
   'click li': (e) ->
     Session.set('accountSelected', @weixin_id)
 
+############################
+# Template: accountModal
+############################
 Template.accountModal.helpers
   account: ->
     db.accounts.findOne({weixin_id: Session.get('accountSelected')})
+  accountSelected: ->
+    Session.get('accountSelected')?
 
 Template.accountModal.events
   'submit .form': (e) ->
