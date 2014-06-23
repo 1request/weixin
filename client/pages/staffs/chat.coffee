@@ -80,7 +80,7 @@ Template.chat.events
       toBottom()
 
   # Load More events
-  'click .load-more': (e) ->
+  'click .more-customers': (e) ->
     e.preventDefault
 
     increment = 15
