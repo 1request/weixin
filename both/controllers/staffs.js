@@ -1,10 +1,13 @@
 Staffs.chat = AppController.extend({
+  findOption: function(){
+    Session.set('customersLimit', 15)
+    return {limit: Session.get('customersLimit')}
+  },
   waitOn: function() {
     currentUserId = Meteor.userId();
-
     return [
       Meteor.subscribe('staffs'), 
-      Meteor.subscribe('customers'),
+      Meteor.subscribe('customers', this.findOption()),
       Meteor.subscribe('messages', Session.get('customerSelected'))
     ];
   }

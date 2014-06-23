@@ -20,7 +20,7 @@ Template.chat.helpers
 
   lastUpdateTime: ->
     Session.get('lastUpdateTime')
-
+    
   messages: ->
     db.messages.find()
 
@@ -78,6 +78,19 @@ Template.chat.events
     Meteor.defer ->
       layoutDone()
       toBottom()
+
+  # Load More events
+  'click .load-more': (e) ->
+    e.preventDefault
+
+    increment = 15
+    if Session.get('customersLimit')
+      limit = Session.get('customersLimit')
+      Session.set('customersLimit', (limit += increment))
+      Meteor.subscribe('customers', limit: Session.get('customersLimit'))
+    else
+      Session.set('customersLimit', increment)
+      this
 
 Template.chat.rendered = ->
   Session.set('customerSelected', '')

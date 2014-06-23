@@ -1,2 +1,2 @@
-Meteor.publish 'customers', ->
-  db.customers.find()
+Meteor.publish 'customers', (options)->
+  db.customers.find {}, options
