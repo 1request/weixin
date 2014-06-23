@@ -10,10 +10,14 @@ html input[disabled] {
 #xinplus-chat.chat {
   height: 550px;
 
-  .contacts ul.list {
-    li.user-selected, li:hover {
-      background: #2d323d;
-      color: white;
+  .contacts {
+    overflow-y: scroll;
+    height: 514px;
+    ul.list {
+      li.user-selected, li:hover {
+        background: #2d323d;
+        color: white;
+      }
     }
   }
 

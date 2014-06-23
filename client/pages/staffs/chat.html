@@ -16,17 +16,19 @@
   <div class="box-header">
   <h2><i class="fa fa-list"></i>{{greeting}}</h2>
   </div>
-  <div class="contacts">
+  <div class="contacts" >
     <ul class="list">
       {{#each customers}}
         {{> userItem}}
       {{/each}}
+      <li><a class="load-more" href="{{loadMore}}">Load More</a></li>
     </ul> 
+    
   </div>
   <div class="conversation">
     <div class="status">
       <div class="app-name">
-        來自APP: {{appName}} -
+        來自APP: {{appName}}
         {{#if talkingCustomer}}
         <button ng-show="selectedUUID" ng-click="chatEnd()" class="btn btn-success" >处理完</button>
         {{/if}}
