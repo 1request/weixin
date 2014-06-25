@@ -75,6 +75,10 @@ Template.chat.events
 
     Session.set('lastUpdateTime', Date())
 
+    messagesLimit = Session.get('customerSelected') + 'msgsLimit'
+    limit = Session.get(messagesLimit) + 1
+    Session.set(messagesLimit, limit)
+
     Meteor.defer ->
       layoutDone()
       toBottom()
