@@ -1,2 +1,2 @@
-Meteor.publish 'messages', (customerId) ->
-  db.messages.find({customer_id: customerId})
+Meteor.publish 'messages', (customerId, options) ->
+  db.messages.find({customer_id: customerId}, options)

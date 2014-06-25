@@ -22,7 +22,7 @@ Template.chat.helpers
     Session.get('lastUpdateTime')
     
   messages: ->
-    db.messages.find()
+    db.messages.find(customer_id: Session.get('customerSelected'))
 
   showDefault: ->
     'default' if Session.get('customerSelected') == ''
@@ -79,21 +79,34 @@ Template.chat.events
       layoutDone()
       toBottom()
 
-  # Load More events
+  # Load More customers
   'click .more-customers': (e) ->
     e.preventDefault
 
-    increment = 15
+    increment = 2
     if Session.get('customersLimit')
-      limit = Session.get('customersLimit')
-      Session.set('customersLimit', (limit += increment))
+      limit = Session.get('customersLimit') + increment
+      Session.set('customersLimit', limit)
       Meteor.subscribe('customers', limit: Session.get('customersLimit'))
     else
-      Session.set('customersLimit', increment)
-      this
+      Session.setDefault('customersLimit', increment)
+
+  # Load More messages
+  'click .more-messages': (e) ->
+    e.preventDefault
+
+    increment = 2
+    messagesLimit = Session.get('customerSelected') + 'msgsLimit'
+    if Session.get(messagesLimit)
+      limit = Session.get(messagesLimit) + increment
+      Session.set(messagesLimit, limit)
+      Meteor.subscribe('messages', Session.get('customerSelected'), limit: Session.get(messagesLimit))
+    else
+      Session.setDefault(messagesLimit, increment)
 
 Template.chat.rendered = ->
   Session.set('customerSelected', '')
+  Session.set('customersLimit', 5)
   layoutDone()
 
 ############################
