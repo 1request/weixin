@@ -2,11 +2,13 @@
 # Local Functions
 ############################
 @validateAccountInfo = ->
+  if (!document.getElementById('gh_id').value)
+    throw new Meteor.Error(422, 'Please fill in GH ID')
+  if (!Session.get('accountSelected')?)
+    account = db.accounts.findOne({gh_id: document.getElementById('gh_id').value})
+    throw new Meteor.Error(422, 'GH ID is already in use') if account?
   if (!document.getElementById('weixin_id').value)
     throw new Meteor.Error(422, 'Please fill in WeChat ID')
-  if (!Session.get('accountSelected')?)
-    account = db.accounts.findOne({weixin_id: document.getElementById('weixin_id').value})
-    throw new Meteor.Error(422, 'WeChat ID is already in use') if account?
   if (!document.getElementById('account_name').value)
     throw new Meteor.Error(422, 'Please fill in Account name')
   if (!document.getElementById('app_id').value)
@@ -23,14 +25,14 @@ Template.accountList.helpers
 
 Template.accountList.events
   'click li': (e) ->
-    Session.set('accountSelected', @weixin_id)
+    Session.set('accountSelected', @gh_id)
 
 ############################
 # Template: accountModal
 ############################
 Template.accountModal.helpers
   account: ->
-    db.accounts.findOne({weixin_id: Session.get('accountSelected')})
+    db.accounts.findOne({gh_id: Session.get('accountSelected')})
   accountSelected: ->
     Session.get('accountSelected')?
 
@@ -43,6 +45,7 @@ Template.accountModal.events
 
       HTTP.post('http://localhost:3000/accounts',
         params:
+          gh_id: document.getElementById('gh_id').value
           weixin_id: document.getElementById('weixin_id').value
           name: document.getElementById('account_name').value
           app_id: document.getElementById('app_id').value
@@ -52,7 +55,7 @@ Template.accountModal.events
         (error, result) -> console.log result
       )
 
-      Session.set('accountSelected', document.getElementById('weixin_id').value)
+      Session.set('accountSelected', document.getElementById('gh_id').value)
 
       $('.form')[0].reset()
       $('#accountModal').modal('toggle')

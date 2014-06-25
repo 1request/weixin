@@ -59,12 +59,29 @@
         <form class="form">
           <div class="modal-body">
               <div class="form-group">
-                <label class="control-label" for="weixin_id">WeChat ID</label>
-                <input type="text" class="form-control" id="weixin_id" value="{{account.weixin_id}}">
+                <label class="control-label" for="account_name">名称</label>
+                {{#if accountSelected}}
+                  <input type="text" class="form-control disabled" id="account_name" value="{{account.name}}" disabled="">
+                {{else}}
+                  <input type="text" class="form-control" id="account_name" value="{{account.name}}">
+                {{/if}}
               </div>
               <div class="form-group">
-                <label class="control-label" for="account_name">Account Name</label>
-                <input type="text" class="form-control" id="account_name" value="{{account.name}}">
+                <label class="control-label" for="gh_id">原始ID</label>
+                {{#if accountSelected}}
+                  <input type="text" class="form-control disabled" id="gh_id" value="{{account.gh_id}}" disabled="">
+                {{else}}
+                  <input type="text" class="form-control" id="gh_id" value="{{account.gh_id}}">
+                  <p class="help-block">e.g. gh_xxxxxxxx</p>
+                {{/if}}
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="weixin_id">微信号</label>
+                {{#if accountSelected}}
+                  <input type="text" class="form-control disabled" id="weixin_id" value="{{account.weixin_id}}" disabled="">
+                {{else}}
+                  <input type="text" class="form-control" id="weixin_id" value="{{account.weixin_id}}">
+                {{/if}}
               </div>
               <div class="form-group">
                 <label class="control-label" for="app_id">App ID</label>

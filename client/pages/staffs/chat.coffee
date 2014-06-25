@@ -18,9 +18,9 @@ Template.accountInfo.helpers
   accountSelected: ->
     Session.get('accountSelected')
   account: ->
-    db.accounts.findOne({weixin_id: Session.get('accountSelected')})
+    db.accounts.findOne({gh_id: Session.get('accountSelected')})
   account_url: ->
-    account = db.accounts.findOne({weixin_id: Session.get('accountSelected')})
+    account = db.accounts.findOne({gh_id: Session.get('accountSelected')})
     if account
       'http://localhost:3000/weixin/' + account.weixin_secret_key
 
@@ -35,7 +35,7 @@ Template.chat.helpers
     Session.get('lastUpdateTime')
 
   messages: ->
-    db.messages.find()
+    db.messages.find({}, {sort: {weixin_msg_id: 1}})
 
   showDefault: ->
     'default' if Session.get('customerSelected') == ''
