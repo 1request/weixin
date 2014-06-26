@@ -22,7 +22,7 @@ Template.chat.helpers
     Session.get('lastUpdateTime')
     
   messages: ->
-    db.messages.find(customer_id: Session.get('customerSelected'))
+    db.messages.find(customer_id: Session.get('customerSelected'), {sort: created_at: 1})
 
   showDefault: ->
     'default' if Session.get('customerSelected') == ''

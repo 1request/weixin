@@ -38,12 +38,13 @@
 
     <div class="talk {{showDefault}}">
       <div id="chat-messages-inner">
+      <a class="more-messages" href="#">查看更多历史消息</a>
         {{#each messages}}
           {{> messageItem}}
         {{/each}}
         
         <!-- dummy --> 
-        <div class="message"><a class="more-messages" href="#">查看更多消息</a></div>
+        <div class="message"></div>
       </div>
     </div>
 
