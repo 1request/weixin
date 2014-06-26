@@ -46,10 +46,12 @@ Template.chat.helpers
 Template.chat.events
   'submit .form': (e) ->
     e.preventDefault()
+    account = db.accounts.findOne({gh_id: Session.get('accountSelected')})
 
     message = $('.write-message')
     data =
       message: message.val()
+      account_id: account._id
       customer_id: Session.get('customerSelected')
       user_id: Meteor.userId()
       message_type: 'staff'
@@ -58,6 +60,7 @@ Template.chat.events
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
     HTTP.post('http://api.xin.io/kf',
       params:
+        gh_id: Session.get('accountSelected')
         weixin_id: customer.fromUser
         q: message.val()
       headers:
