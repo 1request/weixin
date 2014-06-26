@@ -11,11 +11,17 @@ Staffs.chat = AppController.extend({
   messagesOption: function(){
     var messagesLimit = Session.get('customerSelected') + 'msgsLimit';
     if (Session.get(messagesLimit)){
-      return {limit: Session.get(messagesLimit)};
+      return {
+        sort: {created_at: -1},
+        limit: Session.get(messagesLimit)
+      };
     }
     else {
       Session.set(messagesLimit, 5)
-      return {limit: Session.get(messagesLimit)};
+       return {
+        sort: {created_at: -1},
+        limit: Session.get(messagesLimit)
+      };
     }
   },
   waitOn: function() {
