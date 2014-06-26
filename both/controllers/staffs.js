@@ -1,4 +1,13 @@
 Staffs.chat = AppController.extend({
+  customersOption: function(){
+    if (Session.get('customersLimit')){
+      return {limit: Session.get('customersLimit')};
+    }
+    else {
+      Session.set('customersLimit', 5);
+      return {limit: Session.get('customersLimit')};
+    }
+  },  
   messagesOption: function(){
     var messagesLimit = Session.get('customerSelected') + 'msgsLimit';
     if (Session.get(messagesLimit)){
@@ -7,15 +16,6 @@ Staffs.chat = AppController.extend({
     else {
       Session.set(messagesLimit, 5)
       return {limit: Session.get(messagesLimit)};
-    }
-  },
-  customersOption: function(){
-    if (Session.get('customersLimit')){
-      return {limit: Session.get('customersLimit')};
-    }
-    else {
-      Session.set('customersLimit', 5);
-      return {limit: Session.get('customersLimit')};
     }
   },
   waitOn: function() {

@@ -59,7 +59,12 @@ Template.chat.events
       customer_id: Session.get('customerSelected')
       user_id: Meteor.userId()
       message_type: 'staff'
-    db.messages.insert(data)
+    db.messages.insert(
+      data,
+      (error) ->
+        if error
+          return alert(error.reason)
+    )
 
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
     HTTP.post('http://api.xin.io/kf',
