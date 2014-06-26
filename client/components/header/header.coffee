@@ -43,7 +43,7 @@ Template.accountModal.events
     try 
       validateAccountInfo()
 
-      HTTP.post('http://localhost:3000/accounts',
+      HTTP.post('http://api.xin.io/accounts',
         params:
           gh_id: document.getElementById('gh_id').value
           weixin_id: document.getElementById('weixin_id').value

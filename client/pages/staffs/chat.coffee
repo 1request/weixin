@@ -22,7 +22,7 @@ Template.accountInfo.helpers
   account_url: ->
     account = db.accounts.findOne({gh_id: Session.get('accountSelected')})
     if account
-      'http://localhost:3000/weixin/' + account.weixin_secret_key
+      'http://api.xin.io/weixin/' + account.weixin_secret_key
 
 ############################
 # Template: chat
@@ -109,7 +109,7 @@ Template.messageItem.helpers
   contentTypeIs: (type) ->
     @content_type is type
   railsUrl: ->
-    'http://localhost:3000'
+    'http://api.xin.io'
 
 Template.messageItem.rendered = ->
   layoutDone()
