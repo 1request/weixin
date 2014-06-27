@@ -59,7 +59,7 @@ Template.chat.events
       customer_id: Session.get('customerSelected')
       user_id: Meteor.userId()
       message_type: 'staff'
-      created_at: Date()
+      created_at: new Date()
     db.messages.insert(
       data,
       (error) ->
