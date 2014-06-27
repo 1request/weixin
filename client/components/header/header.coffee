@@ -44,7 +44,7 @@ Template.accountModal.events
     try 
       validateAccountInfo()
 
-      HTTP.post('http://api.xin.io/accounts',
+      HTTP.post(Meteor.settings.public.rails_server + '/accounts',
         params:
           gh_id: document.getElementById('gh_id').value
           weixin_id: document.getElementById('weixin_id').value

@@ -22,7 +22,7 @@ Template.accountInfo.helpers
   account_url: ->
     account = db.accounts.findOne({gh_id: Session.get('accountSelected')})
     if account
-      'http://api.xin.io/weixin/' + account.weixin_secret_key
+      Meteor.settings.public.rails_server + '/weixin/' + account.weixin_secret_key
 
 ############################
 # Template: chat
@@ -58,7 +58,7 @@ Template.chat.events
     db.messages.insert(data)
 
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
-    HTTP.post('http://api.xin.io/kf',
+    HTTP.post(Meteor.settings.public.rails_server + '/kf',
       params:
         gh_id: Session.get('accountSelected')
         weixin_id: customer.fromUser
@@ -96,7 +96,6 @@ Template.userItem.events
     db.customers.update({_id: @_id}, {$set: {count: 0}})
     Session.set('customerSelected', @_id)
     Meteor.setTimeout toBottom, 100
-
 ############################
 # Template: messageItem
 ############################
@@ -109,7 +108,7 @@ Template.messageItem.helpers
   contentTypeIs: (type) ->
     @content_type is type
   railsUrl: ->
-    'http://api.xin.io'
+    Meteor.settings.public.rails_server
 
 Template.messageItem.rendered = ->
   layoutDone()

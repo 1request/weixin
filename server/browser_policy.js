@@ -17,4 +17,4 @@ BrowserPolicy.content.disallowInlineScripts();
 //BrowserPolicy.content.allowInlineStyles() // default
 //BrowserPolicy.content.disallowInlineStyles();
 BrowserPolicy.content.allowImageOrigin ('http://wx.qlogo.cn/');
-BrowserPolicy.content.allowOriginForAll ('http://api.xin.io/');
+BrowserPolicy.content.allowOriginForAll (Meteor.settings.public.rails_server);
