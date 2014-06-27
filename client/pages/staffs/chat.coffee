@@ -35,8 +35,7 @@ Template.chat.helpers
     Session.get('lastUpdateTime')
     
   messages: ->
-    db.messages.find({}, {sort: {created_at: 1}})
-
+    db.messages.find(customer_id: Session.get('customerSelected'), {sort: {created_at: 1}})
 
   showDefault: ->
     'default' if Session.get('customerSelected') == ''
