@@ -11,10 +11,6 @@
     throw new Meteor.Error(422, 'Please fill in WeChat ID')
   if (!document.getElementById('account_name').value)
     throw new Meteor.Error(422, 'Please fill in Account name')
-  if (!document.getElementById('app_id').value)
-    throw new Meteor.Error(422, 'Please fill in App ID')
-  if (!document.getElementById('app_secret').value)
-    throw new Meteor.Error(422, 'Please fill in App Secret')
 
 ############################
 # Template: accountList
