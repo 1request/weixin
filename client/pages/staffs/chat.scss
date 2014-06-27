@@ -2,6 +2,16 @@ html input[disabled] {
   cursor: not-allowed;
 }
 
+.arrow-toggle .fa.fa-chevron-up,
+.arrow-toggle.collapsed .fa.fa-chevron-down {
+  display: inline-block !important;
+}
+
+.arrow-toggle .fa.fa-chevron-down,
+.arrow-toggle.collapsed .fa.fa-chevron-up {
+  display: none !important;
+}
+
 .staff-chat.box {
   width: 980px;
   margin: 10px auto 0;

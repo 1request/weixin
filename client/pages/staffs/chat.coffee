@@ -12,6 +12,19 @@ layoutDone = ->
     $(elem).find('.message-arrow').css({'height': height + 'px', 'background-position-y': offset + 'px'})
 
 ############################
+# Template: accountInfo
+############################
+Template.accountInfo.helpers
+  accountSelected: ->
+    Session.get('accountSelected')
+  account: ->
+    db.accounts.findOne({gh_id: Session.get('accountSelected')})
+  account_url: ->
+    account = db.accounts.findOne({gh_id: Session.get('accountSelected')})
+    if account
+      'http://api.xin.io/weixin/' + account.weixin_secret_key
+
+############################
 # Template: chat
 ############################
 Template.chat.helpers
@@ -22,7 +35,8 @@ Template.chat.helpers
     Session.get('lastUpdateTime')
     
   messages: ->
-    db.messages.find(customer_id: Session.get('customerSelected'), {sort: created_at: 1})
+    db.messages.find({}, {sort: {weixin_msg_id: 1}})
+
 
   showDefault: ->
     'default' if Session.get('customerSelected') == ''
@@ -52,10 +66,12 @@ Template.chat.helpers
 Template.chat.events
   'submit .form': (e) ->
     e.preventDefault()
+    account = db.accounts.findOne({gh_id: Session.get('accountSelected')})
 
     message = $('.write-message')
     data =
       message: message.val()
+      account_id: account._id
       customer_id: Session.get('customerSelected')
       user_id: Meteor.userId()
       message_type: 'staff'
@@ -70,6 +86,7 @@ Template.chat.events
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
     HTTP.post('http://api.xin.io/kf',
       params:
+        gh_id: Session.get('accountSelected')
         weixin_id: customer.fromUser
         q: message.val()
       headers:
@@ -149,6 +166,7 @@ Template.messageItem.helpers
     @content_type is type
   railsUrl: ->
     'http://api.xin.io'
+
 Template.messageItem.rendered = ->
   layoutDone()
 
