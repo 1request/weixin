@@ -35,7 +35,7 @@ Template.chat.helpers
     Session.get('lastUpdateTime')
     
   messages: ->
-    db.messages.find({}, {sort: {weixin_msg_id: 1}})
+    db.messages.find({}, {sort: {created_at: 1}})
 
 
   showDefault: ->
