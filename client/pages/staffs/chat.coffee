@@ -33,15 +33,35 @@ Template.chat.helpers
 
   lastUpdateTime: ->
     Session.get('lastUpdateTime')
-
+    
   messages: ->
     db.messages.find({}, {sort: {weixin_msg_id: 1}})
+
 
   showDefault: ->
     'default' if Session.get('customerSelected') == ''
 
   isDisabled: ->
     'disabled' if Session.get('customerSelected') == ''
+
+  greeting: ->
+    t = new Date()
+    h = t.getHours()
+    if h >=0 && h <= 2
+      greeting = '午夜好' 
+    else if h >=3 && h <= 5
+      greeting = '凌晨好' 
+    else if h >= 6 && h <= 11
+      greeting = '早上好' 
+    else if h >=12 && h <=13
+      greeting = '中午好' 
+    else if h >=14 && h <=16
+      greeting = '下午好' 
+    else if h >= 17 && h <= 21
+      greeting = '傍晚好' 
+    else
+      greeting = '晚上好'
+    greeting
 
 Template.chat.events
   'submit .form': (e) ->
@@ -55,7 +75,13 @@ Template.chat.events
       customer_id: Session.get('customerSelected')
       user_id: Meteor.userId()
       message_type: 'staff'
-    db.messages.insert(data)
+      created_at: new Date()
+    db.messages.insert(
+      data,
+      (error) ->
+        if error
+          return alert(error.reason)
+    )
 
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
     HTTP.post(Meteor.settings.public.rails_server + '/kf',
@@ -72,12 +98,42 @@ Template.chat.events
 
     Session.set('lastUpdateTime', Date())
 
+    messagesLimit = Session.get('customerSelected') + 'msgsLimit'
+    limit = Session.get(messagesLimit) + 1
+    Session.set(messagesLimit, limit)
+
     Meteor.defer ->
       layoutDone()
       toBottom()
 
+  # Load More customers
+  'click .more-customers': (e) ->
+    e.preventDefault
+
+    increment = 2
+    if Session.get('customersLimit')
+      limit = Session.get('customersLimit') + increment
+      Session.set('customersLimit', limit)
+      Meteor.subscribe('customers', limit: Session.get('customersLimit'))
+    else
+      Session.setDefault('customersLimit', increment)
+
+  # Load More messages
+  'click .more-messages': (e) ->
+    e.preventDefault
+
+    increment = 2
+    messagesLimit = Session.get('customerSelected') + 'msgsLimit'
+    if Session.get(messagesLimit)
+      limit = Session.get(messagesLimit) + increment
+      Session.set(messagesLimit, limit)
+      Meteor.subscribe('messages', Session.get('customerSelected'), limit: Session.get(messagesLimit))
+    else
+      Session.setDefault(messagesLimit, increment)
+
 Template.chat.rendered = ->
   Session.set('customerSelected', '')
+  Session.set('customersLimit', 5)
   layoutDone()
 
 ############################

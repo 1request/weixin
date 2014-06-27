@@ -1,12 +1,36 @@
 Staffs.chat = AppController.extend({
+  customersOption: function(){
+    if (Session.get('customersLimit')){
+      return {limit: Session.get('customersLimit')};
+    }
+    else {
+      Session.set('customersLimit', 5);
+      return {limit: Session.get('customersLimit')};
+    }
+  },  
+  messagesOption: function(){
+    var messagesLimit = Session.get('customerSelected') + 'msgsLimit';
+    if (Session.get(messagesLimit)){
+      return {
+        sort: {created_at: -1},
+        limit: Session.get(messagesLimit)
+      };
+    }
+    else {
+      Session.set(messagesLimit, 5)
+       return {
+        sort: {created_at: -1},
+        limit: Session.get(messagesLimit)
+      };
+    }
+  },
   waitOn: function() {
     currentUserId = Meteor.userId();
-
     return [
       Meteor.subscribe('staffs'), 
       Meteor.subscribe('accounts'),
-      Meteor.subscribe('customers', Session.get('accountSelected')),
-      Meteor.subscribe('messages', Session.get('customerSelected'))
+      Meteor.subscribe('customers', Session.get('accountSelected'), this.customersOption()),
+      Meteor.subscribe('messages', Session.get('customerSelected'), this.messagesOption())
     ];
   }
 });

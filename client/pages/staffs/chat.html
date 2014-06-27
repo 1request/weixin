@@ -64,19 +64,21 @@
 <div id="xinplus-chat" class="box chat chat-full noOverflow">
 
   <div class="box-header">
-    <h2><i class="fa fa-list"></i>Service Centre</h2>
+  <h2><i class="fa fa-list"></i>{{greeting}}</h2>
   </div>
-  <div class="contacts">
+  <div class="contacts" >
     <ul class="list">
       {{#each customers}}
         {{> userItem}}
       {{/each}}
+      <li><a class="more-customers" href="#">载入更多用户</a></li>
     </ul> 
+    
   </div>
   <div class="conversation">
     <div class="status">
       <div class="app-name">
-        來自APP: {{appName}} -
+        來自APP: {{appName}}
         {{#if talkingCustomer}}
         <button ng-show="selectedUUID" ng-click="chatEnd()" class="btn btn-success" >处理完</button>
         {{/if}}
@@ -86,6 +88,7 @@
 
     <div class="talk {{showDefault}}">
       <div id="chat-messages-inner">
+      <a class="more-messages" href="#">查看更多历史消息</a>
         {{#each messages}}
           {{> messageItem}}
         {{/each}}
@@ -96,8 +99,8 @@
     </div>
 
     <form class="form chat-message">
-      <input type="text" class="write-message" placeholder="Write Message" {{isDisabled}}>
-      <button class="btn btn-lg btn-success" {{isDisabled}}>Send</button>
+      <input type="text" class="write-message" placeholder="在此输入信息" {{isDisabled}}>
+      <button class="btn btn-lg btn-success" {{isDisabled}}>发送</button>
     </form>  
   </div>
 </div>
