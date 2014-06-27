@@ -26,6 +26,7 @@ Template.accountList.helpers
 Template.accountList.events
   'click li': (e) ->
     Session.set('accountSelected', @gh_id)
+    Session.set('customerSelected', "")
 
 ############################
 # Template: accountModal
@@ -56,6 +57,7 @@ Template.accountModal.events
       )
 
       Session.set('accountSelected', document.getElementById('gh_id').value)
+      Session.set('customerSelected', "")
 
       $('.form')[0].reset()
       $('#accountModal').modal('toggle')

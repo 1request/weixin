@@ -5,7 +5,7 @@ Staffs.chat = AppController.extend({
     return [
       Meteor.subscribe('staffs'), 
       Meteor.subscribe('accounts'),
-      Meteor.subscribe('customers'),
+      Meteor.subscribe('customers', Session.get('accountSelected')),
       Meteor.subscribe('messages', Session.get('customerSelected'))
     ];
   }
