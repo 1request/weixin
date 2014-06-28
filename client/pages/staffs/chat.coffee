@@ -75,11 +75,10 @@ Template.chat.events
       user_id: Meteor.userId()
       message_type: 'staff'
       created_at: new Date()
-    db.messages.insert(
-      data,
-      (error) ->
-        if error
-          return alert(error.reason)
+    Meteor.call('insertMsg', data, (error) ->
+      toBottom()
+      if error
+        return alert error.reason
     )
 
     db.customers.update({_id: Session.get('customerSelected')}, {$set: {updated_at: new Date()}})
@@ -105,7 +104,7 @@ Template.chat.events
 
     Meteor.defer ->
       layoutDone()
-      toBottom()
+
 
   # Load More customers
   'click .more-customers': (e) ->

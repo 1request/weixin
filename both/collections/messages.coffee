@@ -1,8 +1,7 @@
 db.messages = new Meteor.Collection 'messages'
 
-db.messages.allow
-  insert: (userId, doc) ->
-    if doc.message != ""
-      true
-    else
+Meteor.methods
+  insertMsg: (data) ->
+    if !data.message
       throw new Meteor.Error(422, '不能发送空消息')
+    msgId = db.messages.insert(data)
