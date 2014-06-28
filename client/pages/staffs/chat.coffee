@@ -29,7 +29,7 @@ Template.accountInfo.helpers
 ############################
 Template.chat.helpers
   customers: ->
-    db.customers.find()
+    db.customers.find({}, {sort: {updated_at: -1}})
 
   lastUpdateTime: ->
     Session.get('lastUpdateTime')
@@ -82,6 +82,8 @@ Template.chat.events
           return alert(error.reason)
     )
 
+    db.customers.update({_id: Session.get('customerSelected')}, {$set: {updated_at: new Date()}})
+
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
     HTTP.post('http://api.xin.io/kf',
       params:
@@ -109,7 +111,7 @@ Template.chat.events
   'click .more-customers': (e) ->
     e.preventDefault
 
-    increment = 2
+    increment = 15
     if Session.get('customersLimit')
       limit = Session.get('customersLimit') + increment
       Session.set('customersLimit', limit)
@@ -121,7 +123,7 @@ Template.chat.events
   'click .more-messages': (e) ->
     e.preventDefault
 
-    increment = 2
+    increment = 15
     messagesLimit = Session.get('customerSelected') + 'msgsLimit'
     if Session.get(messagesLimit)
       limit = Session.get(messagesLimit) + increment
