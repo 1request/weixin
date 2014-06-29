@@ -2,7 +2,7 @@
 # Local Functions
 ############################
 @toBottom = ->
-  $('.conversation .talk').animate({scrollTop: $('.conversation .talk #chat-messages-inner').height()});
+  $('.conversation .talk').animate({scrollTop: $('.conversation .talk #chat-messages-inner').height()})
   
 layoutDone = ->
   $('.me').map (index, elem) ->
@@ -29,14 +29,13 @@ Template.accountInfo.helpers
 ############################
 Template.chat.helpers
   customers: ->
-    db.customers.find()
+    db.customers.find({}, {sort: {updated_at: -1}})
 
   lastUpdateTime: ->
     Session.get('lastUpdateTime')
     
   messages: ->
-    db.messages.find({}, {sort: {weixin_msg_id: 1}})
-
+    db.messages.find(customer_id: Session.get('customerSelected'), {sort: {created_at: 1}})
 
   showDefault: ->
     'default' if Session.get('customerSelected') == ''
@@ -76,12 +75,13 @@ Template.chat.events
       user_id: Meteor.userId()
       message_type: 'staff'
       created_at: new Date()
-    db.messages.insert(
-      data,
-      (error) ->
-        if error
-          return alert(error.reason)
+    Meteor.call('insertMsg', data, (error) ->
+      toBottom()
+      if error
+        return alert error.reason
     )
+
+    db.customers.update({_id: Session.get('customerSelected')}, {$set: {updated_at: new Date()}})
 
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
     HTTP.post(Meteor.settings.public.rails_server + '/kf',
@@ -104,13 +104,13 @@ Template.chat.events
 
     Meteor.defer ->
       layoutDone()
-      toBottom()
+
 
   # Load More customers
   'click .more-customers': (e) ->
     e.preventDefault
 
-    increment = 2
+    increment = 15
     if Session.get('customersLimit')
       limit = Session.get('customersLimit') + increment
       Session.set('customersLimit', limit)
@@ -122,7 +122,7 @@ Template.chat.events
   'click .more-messages': (e) ->
     e.preventDefault
 
-    increment = 2
+    increment = 15
     messagesLimit = Session.get('customerSelected') + 'msgsLimit'
     if Session.get(messagesLimit)
       limit = Session.get(messagesLimit) + increment

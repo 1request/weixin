@@ -4,7 +4,7 @@ Staffs.chat = AppController.extend({
       return {limit: Session.get('customersLimit')};
     }
     else {
-      Session.set('customersLimit', 5);
+      Session.set('customersLimit', 15);
       return {limit: Session.get('customersLimit')};
     }
   },  
@@ -17,7 +17,7 @@ Staffs.chat = AppController.extend({
       };
     }
     else {
-      Session.set(messagesLimit, 5)
+      Session.set(messagesLimit, 15)
        return {
         sort: {created_at: -1},
         limit: Session.get(messagesLimit)
