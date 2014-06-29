@@ -1,5 +1,7 @@
 {
   "public": {
-    "rails_server": "http://localhost:3000"
+    "rails_server": "http://localhost:3000",
+    "customers_inc": 15,
+    "messages_inc": 15
   }
 }
