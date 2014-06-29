@@ -28,7 +28,7 @@ Staffs.chat = AppController.extend({
     currentUserId = Meteor.userId();
     return [
       Meteor.subscribe('staffs'), 
-      Meteor.subscribe('accounts'),
+      Meteor.subscribe('accounts', Meteor.userId()),
       Meteor.subscribe('customers', Session.get('accountSelected'), this.customersOption()),
       Meteor.subscribe('messages', Session.get('customerSelected'), this.messagesOption())
     ];
