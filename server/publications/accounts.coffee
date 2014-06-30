@@ -1,2 +1,2 @@
-Meteor.publish 'accounts', ->
-  db.accounts.find()
+Meteor.publish 'accounts', (userId)->
+  db.accounts.find(user_id: userId)

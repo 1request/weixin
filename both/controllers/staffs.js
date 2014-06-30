@@ -4,7 +4,7 @@ Staffs.chat = AppController.extend({
       return {limit: Session.get('customersLimit')};
     }
     else {
-      Session.set('customersLimit', 5);
+      Session.set('customersLimit', Meteor.settings.public.customers_inc);
       return {limit: Session.get('customersLimit')};
     }
   },  
@@ -17,7 +17,7 @@ Staffs.chat = AppController.extend({
       };
     }
     else {
-      Session.set(messagesLimit, 5)
+      Session.set(messagesLimit, Meteor.settings.public.messages_inc)
        return {
         sort: {created_at: -1},
         limit: Session.get(messagesLimit)
@@ -28,7 +28,7 @@ Staffs.chat = AppController.extend({
     currentUserId = Meteor.userId();
     return [
       Meteor.subscribe('staffs'), 
-      Meteor.subscribe('accounts'),
+      Meteor.subscribe('accounts', Meteor.userId()),
       Meteor.subscribe('customers', Session.get('accountSelected'), this.customersOption()),
       Meteor.subscribe('messages', Session.get('customerSelected'), this.messagesOption())
     ];
