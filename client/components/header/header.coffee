@@ -21,7 +21,7 @@
 ############################
 Template.accountList.helpers
   accounts: ->
-    db.accounts.find()
+    db.accounts.find(user_id: Meteor.userId())
 
 Template.accountList.events
   'click li': (e) ->
@@ -51,6 +51,7 @@ Template.accountModal.events
           name: document.getElementById('account_name').value
           app_id: document.getElementById('app_id').value
           app_secret: document.getElementById('app_secret').value
+          user_id: Meteor.userId()
         headers:
           'Content-Type': 'application/x-www-form-urlencoded'
         (error, result) -> console.log result

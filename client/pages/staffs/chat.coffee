@@ -110,7 +110,7 @@ Template.chat.events
   'click .more-customers': (e) ->
     e.preventDefault
 
-    increment = 15
+    increment = Meteor.settings.public.customers_inc
     if Session.get('customersLimit')
       limit = Session.get('customersLimit') + increment
       Session.set('customersLimit', limit)
@@ -122,7 +122,7 @@ Template.chat.events
   'click .more-messages': (e) ->
     e.preventDefault
 
-    increment = 15
+    increment = Meteor.settings.public.messages_inc
     messagesLimit = Session.get('customerSelected') + 'msgsLimit'
     if Session.get(messagesLimit)
       limit = Session.get(messagesLimit) + increment
