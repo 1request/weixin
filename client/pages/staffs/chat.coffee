@@ -29,7 +29,7 @@ Template.accountInfo.helpers
 ############################
 Template.chat.helpers
   customers: ->
-    db.customers.find({}, {sort: {updated_at: -1}})
+    db.customers.find({}, {sort: {last_message_at: -1}})
 
   lastUpdateTime: ->
     customer = db.customers.findOne({_id: Session.get('customerSelected')})
