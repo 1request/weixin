@@ -32,7 +32,8 @@ Template.chat.helpers
     db.customers.find({}, {sort: {updated_at: -1}})
 
   lastUpdateTime: ->
-    Session.get('lastUpdateTime')
+    customer = db.customers.findOne({_id: Session.get('customerSelected')})
+    customer.last_message_at if customer
     
   messages: ->
     db.messages.find(customer_id: Session.get('customerSelected'), {sort: {created_at: 1}})
@@ -41,7 +42,12 @@ Template.chat.helpers
     'default' if Session.get('customerSelected') == ''
 
   isDisabled: ->
-    'disabled' if Session.get('customerSelected') == ''
+    customer = db.customers.findOne({_id: Session.get('customerSelected')})
+    hours_passed = if customer && customer.last_message_at
+      ((new Date).getTime() - customer.last_message_at.getTime()) / (1000 * 60 * 60)
+    else
+      999
+    'disabled' if hours_passed >= 48
 
   greeting: ->
     t = new Date()
