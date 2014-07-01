@@ -36,3 +36,7 @@ Router.map(function () {
 Router.onBeforeAction(function() {
   document.title = 'XinPlus';
 });
+
+Router.waitOn(function() {
+  return Meteor.subscribe('accounts', Meteor.userId())
+})
