@@ -1,3 +1,11 @@
+Staffs.account = AppController.extend({
+  template: 'accountInfo',
+
+  waitOn: function() {
+    return Meteor.subscribe('accounts', Meteor.userId())
+  }
+});
+
 Staffs.chat = AppController.extend({
   customersOption: function(){
     if (Session.get('customersLimit')){

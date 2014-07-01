@@ -1,0 +1,54 @@
+<template name='accountInfo'>
+  <div class='staff-account box'>
+  {{#if currentUser}}
+    {{> accountInfoDetail}}
+  {{else}}
+    <h1>Please login</h1>
+  {{/if}}
+  </div>
+</template>
+
+<template name="accountInfoDetail">
+  <div class="box-header">
+    <h2><i class="fa fa-user"></i>帐号信息</h2>
+    <div class="box-icon">
+      <i class="fa fa-wrench" data-toggle="modal" data-target="#accountModal"></i>
+    </div>
+  </div>
+  <div class="box-content" id="accountInfo">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>名称</td>
+          <td>{{account.name}}</td>
+        </tr>
+        <tr>
+          <td>原始ID</td>
+          <td>{{account.gh_id}}</td>
+        </tr>
+        <tr>
+          <td>微信号</td>
+          <td>{{account.weixin_id}}</td>
+        </tr>
+        <tr>
+          <td>App ID</td>
+          <td>{{account.app_id}}</td>
+        </tr>
+        <tr>
+          <td>App Secret</td>
+          <td>{{account.app_secret}}</td>
+        </tr>
+        <tr>
+          <td>URL</td>
+          <td>
+            {{account_url}}
+          </td>
+        </tr>
+        <tr>
+          <td>Token</td>
+          <td>{{account.weixin_token}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
