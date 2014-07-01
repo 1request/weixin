@@ -10,6 +10,8 @@ Router.map(function () {
   this.route('weixin', {path: '/'})
 
   // staffs routes
+  this.route('accountInfo', { path: 'staffs/account', controller: Staffs.account });
+
   this.route('staffChat', { path: '/staffs/chat',     controller: Staffs.chat }, function(){
     this.setHeader('access-control-allow-origin', '*');
     this.response.setHeader('access-control-allow-origin', '*');

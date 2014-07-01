@@ -21,12 +21,29 @@
 ############################
 Template.accountList.helpers
   accounts: ->
-    db.accounts.find(user_id: Meteor.userId())
+    db.accounts.find(user_id: Meteor.userId(), gh_id: {$not: Session.get 'accountSelected'})
+  account: ->
+    if Session.get 'accountSelected'
+      db.accounts.findOne({user_id: Meteor.userId(), gh_id: Session.get 'accountSelected'})
 
 Template.accountList.events
   'click li': (e) ->
-    Session.set('accountSelected', @gh_id)
-    Session.set('customerSelected', "")
+    if e.target.id == 'addAccount'
+      Session.set('accountSelected', undefined)
+      Session.set('customerSelected', "")
+    else if e.target.href.match '#'
+      Session.set('accountSelected', @gh_id)
+      Session.set('customerSelected', "")
+
+Template.accountList.rendered = ->
+  @accountListDep = Deps.autorun ->
+    account = db.accounts.findOne(user_id: Meteor.userId())
+    if account
+      Session.setDefault('accountSelected', account.gh_id)
+
+Template.accountList.destroyed = ->
+  if @accountListDep
+    @accountListDep.stop()
 
 ############################
 # Template: accountModal

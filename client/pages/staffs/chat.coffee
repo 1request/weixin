@@ -12,19 +12,6 @@ layoutDone = ->
     $(elem).find('.message-arrow').css({'height': height + 'px', 'background-position-y': offset + 'px'})
 
 ############################
-# Template: accountInfo
-############################
-Template.accountInfo.helpers
-  accountSelected: ->
-    Session.get('accountSelected')
-  account: ->
-    db.accounts.findOne({gh_id: Session.get('accountSelected')})
-  account_url: ->
-    account = db.accounts.findOne({gh_id: Session.get('accountSelected')})
-    if account
-      Meteor.settings.public.rails_server + '/weixin/' + account.weixin_secret_key
-
-############################
 # Template: chat
 ############################
 Template.chat.helpers
