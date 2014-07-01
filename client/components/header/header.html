@@ -10,8 +10,8 @@
 
         <li><a href="{{pathFor 'weixin'}}">首页</a></li>
         {{#if currentUser}}
-          <li>{{> accountList}}</li>
           <li><a href="{{pathFor 'staffChat'}}">客服中心</a></li>
+          <li>{{> accountList}}</li>
         {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
