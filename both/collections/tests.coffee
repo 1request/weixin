@@ -16,8 +16,9 @@
   Meteor.setTimeout toBottom, 100
 
 @addCustomer = (from) ->
+  account = db.accounts.findOne(gh_id: Session.get 'accountSelected')
   customer = db.customers.insert({
     name: from, 
-    headimgurl: '/assets/avatar.jpg'
+    account_id: account._id
     count: 0
   })

@@ -139,6 +139,11 @@ Template.userItem.helpers
     @count > 0
   customerSelected: ->
     'user-selected' if Session.get('customerSelected') == @_id
+  headimg: ->
+    if @headimgurl
+      @headimgurl
+    else
+      '/assets/avatar.jpg'
 
 Template.userItem.events
   'click li': (e) ->
