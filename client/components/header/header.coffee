@@ -29,7 +29,7 @@ Template.accountList.helpers
 Template.accountList.events
   'click li': (e) ->
     if e.target.id == 'addAccount'
-      Session.set('accountSelected', "")
+      Session.set('accountSelected', undefined)
       Session.set('customerSelected', "")
     else if e.target.href.match '#'
       Session.set('accountSelected', @gh_id)
