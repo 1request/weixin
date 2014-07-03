@@ -1,47 +1,30 @@
 <template name='layout'>
   {{> header}}
   {{> yield}}
+  {{> footer}}
 </template>
 
 <template name='weixin'>
   <div id="html5"></div>
-
-  <div>
-    <div id="banner_area">
-      <div id="intro_video" style="text-align:center;padding:40px 0;">
-        <div id="intro_video_inner"></div>
-        <div id="wistia_99g5s02wsk" class="wistia_embed" style="width:747px;height:420px;display:none;margin:0 auto;">&nbsp;</div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <div class="featurescontainer">
-      <div class="features">
-        <div class="featurette">
-          <a name="3rdparty"></a>
-          <img src="assets/real_time.jpg" class="featurette-image pull-right" />
+  <div class="container-fluid featurescontainer">
+    <div class="features">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="featurette">
+          <h2 class="featurette-heading">多平台 云登录</h2>
+          <p class="lead">信+客服工具支持在电脑、手机，包括苹果和安卓等多个平台登录，让您随时随地与粉丝互动，答疑解惑，不漏掉任何一个商业机会。（手机APP正在开发中）</p>
+          </div>
+          <div class="featurette">
           <h2 class="featurette-heading">永久保存聊天记录<br/></h2>
           <p class="lead">信+客服工具，可以将你收到的每一条微信公众号留言都保存下来，再也不用担心微信公众号的聊天记录限制问题，保存更多的信息让您“有”数据可以挖掘！</p>
-        </div>
-
-        <div class="featurette">
-          <a name="remote"></a>
-          <img src="assets/increase_sales.jpg" class="featurette-image pull-left" />
+          </div>
+          <div class="featurette">
           <h2 class="featurette-heading">微信客服专用接口<br/></h2>
           <p class="lead">信+客服工具使用的是微信客服专用接口，24小时内任意发送消息给活跃粉丝。更专业，更安全，更可靠！</p>
+          </div>
         </div>
-
-        <div class="featurette">
-          <a name="simplecode"></a>
-          <img src="assets/secured.jpg" class="featurette-image pull-right" />
-          <h2 class="featurette-heading">多平台 云登录</h2>
-          <p class="lead">信+客服工具支持在电脑、手机，包括苹果和安卓等多个平台登录，让您随时随地与粉丝互动，答疑解惑，不漏掉任何一个商业机会。</p>
-
-        </div>
-
-        <div style="text-align: center">
-          <a href="#"><img src="assets/register_large.png" alt="" /></a>
+        <div class="col-xs-6">
+          这里是登录框
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@
 
 <template name="accountList">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      帐号
+      微信公众号
       {{#if account.name}}
         : {{account.name}}
       {{/if}}
@@ -33,15 +33,17 @@
     </a>
     <ul class="dropdown-menu">
       {{#if account}}
-        <li><span class="dropdown-menu-title">{{account.name}}</span></li>
+        <li><span class="dropdown-menu-title">当前使用：{{account.name}}</span></li>
         <li><a href="{{pathFor 'accountInfo'}}">
-          帐号信息
+          查看当前帐号信息
         </a></li> 
       {{/if}}
+      {{#if accounts}}
       <li><span class="dropdown-menu-title">其他帐号</span></li>
-      {{#each accounts}}
-        {{> accountDropdown}}
-      {{/each}}
+        {{#each accounts}}
+          {{> accountDropdown}}
+        {{/each}}
+      {{/if}}
       <li>
         <a class="dropdown-menu-sub-footer" id="addAccount" data-toggle="modal" data-target="#accountModal">
           新建帐号

@@ -271,13 +271,14 @@ h6 {
 /* Header Section
 =================================================================== */
 .navbar {
-  margin: 0;
+  margin: 0 auto;
   min-height: 40px;
   border: none;
   background: #fff;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
+  width: 940px;
 }
 .navbar a {
   color: #7b7b7b;
@@ -461,7 +462,7 @@ a.navbar-brand:hover {
   margin: -1px;
 }
 .dropdown-menu-sub-footer {
-  text-align: center;
+  text-align: left;
   background: #e4e6eb;
   cursor: pointer;
 }
