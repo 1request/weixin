@@ -126,7 +126,7 @@ Template.chat.events
 
 Template.chat.rendered = ->
   Session.set('customerSelected', '')
-  Session.set('customersLimit', 5)
+  Session.set('customersLimit', Meteor.settings.public.messages_inc)
   layoutDone()
 
 ############################

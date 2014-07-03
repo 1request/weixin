@@ -5,11 +5,17 @@ Staffs.account = AppController.extend({
 Staffs.chat = AppController.extend({
   customersOption: function(){
     if (Session.get('customersLimit')){
-      return {limit: Session.get('customersLimit')};
+      return {
+        sort: {last_message_at: -1},
+        limit: Session.get('customersLimit')
+      };
     }
     else {
       Session.set('customersLimit', Meteor.settings.public.customers_inc);
-      return {limit: Session.get('customersLimit')};
+      return {
+        sort: {last_message_at: -1},
+        limit: Session.get('customersLimit')
+      };
     }
   },  
   messagesOption: function(){
